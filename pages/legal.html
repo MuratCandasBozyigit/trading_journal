@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111a16">
+    <meta name="description" content="Ledgerly gizlilik ve kullanım bilgileri.">
+    <title>Ledgerly — Gizlilik ve Kullanım</title>
+    <script>try { const cookieTheme = document.cookie.split("; ").find((item) => item.startsWith("ledgerly-theme="))?.split("=")[1]; document.documentElement.dataset.theme = cookieTheme || localStorage.getItem("ledgerly-theme") || "dark"; } catch { document.documentElement.dataset.theme = "dark"; }</script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <script src="../assets/js/script.js" defer></script>
+</head>
+<body class="legal-page-body">
+    <header class="site-header">
+        <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">L</span><span>ledgerly<span class="brand-period">.</span></span></a>
+        <button class="menu-toggle" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="main-nav"><span></span><span></span></button>
+        <nav class="main-nav" id="main-nav" aria-label="Yasal sayfa navigasyonu"><a href="../index.html">Ana sayfa</a><a href="pricing.html">Fiyatlandırma</a></nav>
+        <div class="header-actions"><label class="language-picker"><span class="sr-only">Dil seç</span><select id="language-select" aria-label="Dil seç"><option value="tr">🇹🇷 TR</option><option value="en">🇺🇸 EN</option><option value="fr">🇫🇷 FR</option><option value="es">🇪🇸 ES</option><option value="de">🇩🇪 DE</option></select></label><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Açık temaya geç" title="Tema değiştir"><span aria-hidden="true">☾</span></button><a class="header-coffee-btn" href="../index.html#support"><span class="coffee-icon" aria-hidden="true">☕</span><span data-i18n="supportHeaderBtn">Bana Destek Çık</span></a><a class="header-cta" href="https://bytewavestudio.com" target="_blank" rel="noopener noreferrer">BytewaveStudio.com ↗</a></div>
+    </header>
+    <main class="legal-page page-shell">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> LEDGERLY / YASAL BİLGİLER</p>
+        <h1>Gizlilik ve kullanım</h1>
+        <p class="legal-updated">Son güncelleme: 29 Ekim 2026 · Yayın öncesi işletme ve hukuk bilgileriyle tamamlanmalıdır.</p>
+        <div class="legal-content">
+            <section id="privacy"><h2>Gizlilik bildirimi</h2><p>Hesap oluştururken ad-soyad, e-posta, telefon, seçilen piyasalar, işlem yoğunluğu ve takip edilen semboller alınır. Trade kayıtları yalnızca oturum açmış kullanıcının hesabında görüntülenir. Parolalar scrypt ile hash’lenir; profil ve trade kasası kullanıcı başına ayrı AES-256-GCM anahtarıyla şifrelenir. E-posta, hesap bulmak için anahtarlı HMAC indeksiyle tutulur.</p><p>Uygulama anahtarı sunucu yapılandırmasında bulunur; veritabanı dosyasıyla aynı yedek içinde saklanmamalıdır. Anahtar kaybolursa şifreli kullanıcı kasaları çözülemez. CSV/JSON dışa aktarma dosyaları şifreli değildir ve indirildikten sonra kullanıcının sorumluluğundadır.</p><p>PayTR destek ödemelerinde kart bilgileri Ledgerly tarafından alınmaz; ödeme formu PayTR’nin güvenli iFrame’inde açılır. Ödeme sonucu, PayTR sunucu bildiriminin imza doğrulaması sonrasında kaydedilir.</p><p>Veri sorumlusu ve iletişim: <a href="https://bytewavestudio.com" target="_blank" rel="noopener noreferrer">BytewaveStudio.com</a>. Bu metin başlangıç taslağıdır. Yayından önce işletme unvanı, adres, iletişim, veri saklama/silme süreleri, ilgili kişi başvuru yöntemi ve KVKK aydınlatma yükümlülükleri hukuk danışmanıyla doğrulanmalıdır.</p></section>
+            <section id="cookies"><h2>Çerezler ve yerel depolama</h2><p>Açık/koyu tema tercihi tarayıcı yerel depolamasında ve destekleyen ortamlarda çerezde saklanır. Admin oturum çerezi HttpOnly ve SameSite özellikleriyle sunucudan verilir. Tarayıcı ayarlarından yerel tercihleri ve çerezleri silebilirsin.</p></section>
+            <section id="terms"><h2>Kullanım koşulları</h2><p>Ledgerly işlem kaydı ve kişisel performans incelemesi içindir; yatırım tavsiyesi, alım-satım sinyali, getiri vaadi veya aracı kurum hizmeti sunmaz. Gösterilen paketler, fiyatlar, hesap istatistikleri ve işlemler geliştirme örneği olabilir; yayımdan önce doğrulanmış ticari koşullarla değiştirilmelidir.</p><p>Kullanıcı kendi hesap ve işlem verilerinin doğruluğundan, kimlik bilgilerinin korunmasından ve hizmeti yürürlükteki mevzuata uygun kullanmaktan sorumludur. Gerçek hizmet kapsamı, ücretler, iptal/iade süreci, fikri haklar, sorumluluk sınırları ve uygulanacak hukuk yayımdan önce işletme koşullarına göre düzenlenmelidir.</p></section>
+            <section id="payments"><h2>Ödemeler ve destek</h2><p>Kahve desteği ödemesi ancak PayTR mağaza kimlikleri, HTTPS alan adı, PayTR bildirim URL’si ve test işlemleri tamamlandıktan sonra açılmalıdır. Ödeme durumu yalnız PayTR callback imzası doğrulandıktan sonra kesinleşir. Müşterinin başarı dönüş sayfası tek başına ödeme kanıtı değildir.</p></section>
+        </div>
+    </main>
+    <footer class="site-footer page-shell"><a class="brand footer-brand" href="../index.html"><span class="brand-mark" aria-hidden="true">L</span><span>ledgerly<span class="brand-period">.</span></span></a><p>© 2026 Ledgerly</p><a class="admin-link" href="https://bytewavestudio.com" target="_blank" rel="noopener noreferrer">BytewaveStudio.com ↗</a></footer>
+</body>
+</html>

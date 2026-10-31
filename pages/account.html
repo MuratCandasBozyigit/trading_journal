@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111a16">
+    <meta name="description" content="Ledgerly kişisel trading günlüğü hesabı.">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Ledgerly — Hesabım</title>
+    <script>try { const cookieTheme = document.cookie.split("; ").find((item) => item.startsWith("ledgerly-theme="))?.split("=")[1]; document.documentElement.dataset.theme = cookieTheme || localStorage.getItem("ledgerly-theme") || "dark"; } catch { document.documentElement.dataset.theme = "dark"; }</script>
+    <link rel="stylesheet" href="../assets/css/account.css">
+    <script src="../assets/js/account.js" defer></script>
+</head>
+<body>
+    <main class="account-shell">
+        <header class="account-header">
+            <a class="account-brand" href="../index.html"><span class="brand-mark">L</span><span>ledgerly<span class="brand-period">.</span></span></a>
+            <div class="account-header-controls">
+                <label class="sr-only" for="language-select">Dil / Language</label>
+                <select class="account-lang-select" id="language-select" aria-label="Language selection">
+                    <option value="tr">🇹🇷 TR</option>
+                    <option value="en">🇺🇸 EN</option>
+                    <option value="fr">🇫🇷 FR</option>
+                    <option value="es">🇪🇸 ES</option>
+                    <option value="de">🇩🇪 DE</option>
+                </select>
+                <button class="account-theme-toggle" id="theme-toggle" type="button" aria-label="Temayı Değiştir" title="Temayı Değiştir">
+                    <span class="theme-icon-light" aria-hidden="true">☀️</span>
+                    <span class="theme-icon-dark" aria-hidden="true">🌙</span>
+                </button>
+                <a class="account-header-link" href="../pages/pricing.html"><span data-i18n="plansAndSupport">Planlar ve destek</span> ↗</a>
+            </div>
+        </header>
+
+        <section class="auth-layout" id="auth-view" aria-labelledby="auth-title">
+            <div class="auth-story">
+                <p class="account-eyebrow"><span class="eyebrow-dot"></span> <span data-i18n="authEyebrow">KİŞİSEL TRADING ALANIN</span></p>
+                <h1 id="auth-title" data-i18n="authMainTitle">İşlemlerin<br><em>sana özel.</em></h1>
+                <p data-i18n="authDescription">Her kaydın hesabında şifreli saklanır. Piyasalarını ve işlem alışkanlıklarını belirle, profesyonel trade günlüğünü hemen kullanmaya başla.</p>
+                <div class="privacy-mark">
+                    <span class="privacy-icon" aria-hidden="true">🔒</span>
+                    <span data-i18n="authVaultNotice">Trade ve hesap verilerin sana özel AES-256-GCM şifreli kasada korunur.</span>
+                </div>
+            </div>
+
+            <section class="auth-panel">
+                <div class="auth-tabs" role="tablist" aria-label="Hesap işlemleri">
+                    <button id="login-tab" type="button" role="tab" aria-selected="true" aria-controls="login-panel" data-i18n="tabLogin">Giriş yap</button>
+                    <button id="register-tab" type="button" role="tab" aria-selected="false" aria-controls="register-panel" data-i18n="tabRegister">Hesap oluştur</button>
+                    <button id="forgot-tab" type="button" role="tab" aria-selected="false" aria-controls="forgot-panel" data-i18n="tabForgot">Şifremi unuttum</button>
+                </div>
+
+                <!-- LOGIN PANEL -->
+                <div id="login-panel" role="tabpanel" aria-labelledby="login-tab">
+                    <h2 data-i18n="loginTitle">Tekrar hoş geldin</h2>
+                    <p class="auth-subtitle" data-i18n="loginSubtitle">Kişisel trade günlüğüne güvenli giriş yap.</p>
+                    <form id="login-form" class="account-form">
+                        <label for="login-email" data-i18n="labelEmail">E-posta</label>
+                        <input id="login-email" name="email" type="email" autocomplete="email" required placeholder="ornek@domain.com">
+                        
+                        <div class="label-with-action">
+                            <label for="login-password" data-i18n="labelPassword">Şifre</label>
+                            <button type="button" class="text-sublink" id="goto-forgot-btn" data-i18n="linkForgot">Şifremi unuttum?</button>
+                        </div>
+                        <div class="password-input-wrap">
+                            <input id="login-password" name="password" type="password" autocomplete="current-password" required placeholder="••••••••••••">
+                            <button type="button" class="pwd-visibility-toggle" data-target="login-password" aria-label="Şifreyi göster/gizle">👁️</button>
+                        </div>
+
+                        <p class="account-error" id="login-error" role="alert" hidden></p>
+                        <button class="account-primary" type="submit">
+                            <span data-i18n="btnLogin">Giriş yap</span>
+                            <span class="button-arrow" aria-hidden="true">↗</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- REGISTER PANEL -->
+                <div id="register-panel" role="tabpanel" aria-labelledby="register-tab" hidden>
+                    <h2 data-i18n="registerTitle">Hesabını oluştur</h2>
+                    <p class="auth-subtitle" data-i18n="registerSubtitle">Günlüğünü trading tarzına göre 1 dakikada hazırla.</p>
+                    <form id="register-form" class="account-form">
+                        <label for="register-name" data-i18n="labelFullName">Ad soyad</label>
+                        <input id="register-name" name="name" autocomplete="name" maxlength="100" required placeholder="Ad Soyad">
+
+                        <div class="form-row-2">
+                            <div>
+                                <label for="register-email" data-i18n="labelEmail">E-posta</label>
+                                <input id="register-email" name="email" type="email" autocomplete="email" maxlength="150" required placeholder="trader@ledgerly.example">
+                            </div>
+                            <div>
+                                <label for="register-phone" data-i18n="labelPhone">Telefon</label>
+                                <input id="register-phone" name="phone" type="tel" autocomplete="tel" maxlength="32" required placeholder="+90 5XX XXX XX XX">
+                            </div>
+                        </div>
+
+                        <label for="register-password">
+                            <span data-i18n="labelPassword">Şifre</span>
+                            <span class="label-hint" data-i18n="labelPasswordHint">(En az 12 karakter)</span>
+                        </label>
+                        <div class="password-input-wrap">
+                            <input id="register-password" name="password" type="password" autocomplete="new-password" minlength="12" required placeholder="••••••••••••">
+                            <button type="button" class="pwd-visibility-toggle" data-target="register-password" aria-label="Şifreyi göster/gizle">👁️</button>
+                        </div>
+
+                        <fieldset class="market-fieldset">
+                            <legend data-i18n="legendMarkets">İşlem yaptığın piyasalar (Hızlı Seçim)</legend>
+                            <div class="market-chips-grid">
+                                <label class="market-chip"><input type="checkbox" name="markets" value="forex"><span>💱 Forex</span></label>
+                                <label class="market-chip"><input type="checkbox" name="markets" value="crypto_spot"><span>⚡ Kripto Spot</span></label>
+                                <label class="market-chip"><input type="checkbox" name="markets" value="crypto_futures"><span>📈 Kripto Vadeli</span></label>
+                                <label class="market-chip"><input type="checkbox" name="markets" value="bist"><span>🏛️ BIST</span></label>
+                                <label class="market-chip"><input type="checkbox" name="markets" value="viop"><span>📑 VİOP</span></label>
+                                <label class="market-chip"><input type="checkbox" name="markets" value="us_stocks"><span>🇺🇸 ABD Hisseleri</span></label>
+                                <label class="market-chip"><input type="checkbox" name="markets" value="commodities"><span>🥇 Emtia / Altın</span></label>
+                                <label class="market-chip"><input type="checkbox" name="markets" value="indices"><span>📊 Endeksler</span></label>
+                                <label class="market-chip"><input type="checkbox" name="markets" value="options"><span>🎯 Opsiyon</span></label>
+                                <label class="market-chip"><input type="checkbox" name="markets" value="other"><span>🌐 Diğer</span></label>
+                            </div>
+                        </fieldset>
+
+                        <div class="form-row-2">
+                            <div>
+                                <label for="trade-intensity" data-i18n="labelIntensity">İşlem yoğunluğun</label>
+                                <select id="trade-intensity" name="intensity">
+                                    <option value="occasional" data-i18n="intensityOccasional">Ara sıra</option>
+                                    <option value="weekly" data-i18n="intensityWeekly">Haftada birkaç</option>
+                                    <option value="daily" data-i18n="intensityDaily">Günde birkaç</option>
+                                    <option value="multiple_daily" data-i18n="intensityActive">Günde çok sayıda (Scalp)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="preferred-currency" data-i18n="labelCurrency">Rapor para birimi</label>
+                                <select id="preferred-currency" name="currency">
+                                    <option value="TRY">₺ TRY — Türk Lirası</option>
+                                    <option value="USD">$ USD — US Dollar</option>
+                                    <option value="EUR">€ EUR — Euro</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <label for="symbols">
+                            <span data-i18n="labelSymbols">Takip ettiğin pariteler / semboller</span>
+                            <span class="label-hint" data-i18n="labelSymbolsHint">(Virgülle ayırabilirsin)</span>
+                        </label>
+                        <input id="symbols" name="symbols" placeholder="BTCUSDT, EURUSD, THYAO, XAUUSD">
+
+                        <p class="account-error" id="register-error" role="alert" hidden></p>
+
+                        <label class="consent-check">
+                            <input name="privacyAccepted" type="checkbox" required>
+                            <span data-i18n="consentText">Gizlilik bildirimini ve verilerimin AES-256-GCM ile şifrelenmesini onaylıyorum. <a href="legal.html#privacy" target="_blank" rel="noopener noreferrer">Gizlilik Bildirimi</a></span>
+                        </label>
+
+                        <button class="account-primary" type="submit">
+                            <span data-i18n="btnRegister">Güvenli Hesap Oluştur</span>
+                            <span class="button-arrow" aria-hidden="true">↗</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- FORGOT PASSWORD PANEL -->
+                <div id="forgot-panel" role="tabpanel" aria-labelledby="forgot-tab" hidden>
+                    <h2 data-i18n="forgotTitle">Şifremi Unuttum</h2>
+                    <p class="auth-subtitle" data-i18n="forgotSubtitle">Kayıtlı e-posta adresini girerek şifreni güvenle sıfırla.</p>
+                    
+                    <form id="forgot-request-form" class="account-form">
+                        <label for="forgot-email" data-i18n="labelEmail">E-posta Adresin</label>
+                        <input id="forgot-email" name="email" type="email" autocomplete="email" required placeholder="ornek@domain.com">
+                        <p class="account-message" id="forgot-message" role="status" hidden></p>
+                        <p class="account-error" id="forgot-error" role="alert" hidden></p>
+                        <button class="account-primary" type="submit">
+                            <span data-i18n="btnSendResetCode">Sıfırlama Kodu Oluştur</span>
+                            <span class="button-arrow" aria-hidden="true">✉️</span>
+                        </button>
+                    </form>
+
+                    <div class="reset-code-section" id="reset-code-section" hidden>
+                        <hr class="form-divider">
+                        <h3 data-i18n="resetNewPwdTitle">Yeni Şifre Belirle</h3>
+                        <form id="forgot-reset-form" class="account-form">
+                            <label for="reset-token" data-i18n="labelResetToken">Sıfırlama Kodu / Token</label>
+                            <input id="reset-token" name="token" required placeholder="Gelen sıfırlama kodunu yapıştır">
+                            
+                            <label for="reset-new-password">
+                                <span data-i18n="labelNewPassword">Yeni Şifreniz</span>
+                                <span class="label-hint" data-i18n="labelPasswordHint">(En az 12 karakter)</span>
+                            </label>
+                            <div class="password-input-wrap">
+                                <input id="reset-new-password" name="password" type="password" minlength="12" required placeholder="••••••••••••">
+                                <button type="button" class="pwd-visibility-toggle" data-target="reset-new-password" aria-label="Şifreyi göster/gizle">👁️</button>
+                            </div>
+
+                            <p class="account-message" id="reset-success-message" role="status" hidden></p>
+                            <p class="account-error" id="reset-error" role="alert" hidden></p>
+                            <button class="account-primary" type="submit">
+                                <span data-i18n="btnApplyNewPassword">Şifremi Güncelle ve Giriş Yap</span>
+                                <span class="button-arrow" aria-hidden="true">✓</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- DASHBOARD VIEW -->
+        <section class="user-dashboard" id="dashboard-view" hidden>
+            <header class="dashboard-header">
+                <div>
+                    <p class="account-eyebrow"><span class="eyebrow-dot"></span> <span data-i18n="dashEyebrow">KİŞİSEL ALAN</span></p>
+                    <h1><span data-i18n="dashGreeting">Merhaba</span>, <span id="user-name"></span></h1>
+                    <p class="dashboard-lede" data-i18n="dashSubtitle">Trade günlüğün sadece senin hesabında şifreli olarak saklanır.</p>
+                </div>
+                <div class="dashboard-header-actions">
+                    <button class="account-secondary" id="export-all-csv" type="button" data-i18n="btnExportCsv">Tümünü CSV İndir</button>
+                    <button class="account-secondary" id="export-all-json" type="button" data-i18n="btnExportJson">JSON Yedeği</button>
+                    <button class="logout-button" id="logout-button" type="button" aria-label="Oturumu kapat" title="Oturumu kapat" data-i18n="btnLogout">Çıkış Yap ↗</button>
+                </div>
+            </header>
+
+            <div class="private-notice">
+                <span class="privacy-icon" aria-hidden="true">🛡️</span>
+                <p>
+                    <strong data-i18n="vaultTitle">Uçtan Uca Şifreli Kişisel Kasa</strong><br>
+                    <span data-i18n="vaultDesc">Profil ve trade kayıtların sunucuda sana özel anahtarla şifrelenmiş olarak saklanır. Dışa aktarma dosyaları şifresiz olacağından indirdiğin dosyayı güvenli yerde tut.</span>
+                </p>
+            </div>
+
+            <p class="user-preferences" id="user-preferences"></p>
+
+            <section class="journal-section" aria-labelledby="journal-heading">
+                <div class="section-heading">
+                    <div>
+                        <p class="account-eyebrow" data-i18n="journalEyebrow">YENİ KAYIT</p>
+                        <h2 id="journal-heading" data-i18n="journalHeading">Trade Günlüğüne Ekle</h2>
+                    </div>
+                    <span class="form-step" data-i18n="journalStep">01 / KAYIT</span>
+                </div>
+
+                <form id="trade-form" class="trade-form">
+                    <input type="hidden" name="tradeId">
+                    <div class="trade-form-grid">
+                        <label class="field-wide">
+                            <span data-i18n="tradeMarket">Piyasa</span>
+                            <select name="market" required>
+                                <option value="" data-i18n="tradeSelect">Piyasa seç</option>
+                                <option value="forex">Forex</option>
+                                <option value="crypto_spot">Kripto spot</option>
+                                <option value="crypto_futures">Kripto vadeli</option>
+                                <option value="bist">BIST</option>
+                                <option value="viop">VİOP</option>
+                                <option value="us_stocks">ABD hisseleri</option>
+                                <option value="commodities">Emtia</option>
+                                <option value="indices">Endeks</option>
+                                <option value="options">Opsiyon</option>
+                                <option value="other">Diğer</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span data-i18n="tradeSymbol">Parite / Sembol</span>
+                            <input name="symbol" maxlength="40" placeholder="EURUSD, BTCUSDT, THYAO" required>
+                        </label>
+                        <label>
+                            <span data-i18n="tradeSide">Yön</span>
+                            <select name="side" required>
+                                <option value="long">Long / Alış</option>
+                                <option value="short">Short / Satış</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span data-i18n="tradeOpenedAt">Açılış Tarihi</span>
+                            <input name="openedAt" type="datetime-local" required>
+                        </label>
+                        <label>
+                            <span data-i18n="tradeClosedAt">Kapanış Tarihi</span>
+                            <input name="closedAt" type="datetime-local">
+                        </label>
+                        <label>
+                            <span data-i18n="tradeOrderType">İşlem Tipi</span>
+                            <select name="orderType">
+                                <option value="market">Piyasa</option>
+                                <option value="limit">Limit</option>
+                                <option value="stop">Stop</option>
+                                <option value="other">Diğer</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span data-i18n="tradeTimeframe">Zaman Dilimi</span>
+                            <select name="timeframe">
+                                <option value="">Seç</option>
+                                <option>1m</option><option>5m</option><option>15m</option><option>30m</option><option>1h</option><option>4h</option><option>1D</option><option>1W</option><option>Uzun vade</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span data-i18n="tradeEntryPrice">Giriş Fiyatı</span>
+                            <input name="entryPrice" type="number" min="0.00000001" step="any" required placeholder="0.00">
+                        </label>
+                        <label>
+                            <span data-i18n="tradeExitPrice">Çıkış Fiyatı</span>
+                            <input name="exitPrice" type="number" min="0" step="any" placeholder="0.00">
+                        </label>
+                        <label>
+                            <span data-i18n="tradeQuantity">Miktar / Kontrat</span>
+                            <input name="quantity" type="number" min="0.00000001" step="any" required placeholder="1.0">
+                        </label>
+                        <label>
+                            <span data-i18n="tradeLeverage">Kaldıraç</span>
+                            <input name="leverage" type="number" min="1" max="1000" step="any" placeholder="Kaldıraçsızsa boş bırak">
+                        </label>
+                        <label>
+                            <span data-i18n="tradeStopLoss">Stop Loss</span>
+                            <input name="stopLoss" type="number" min="0" step="any" placeholder="0.00">
+                        </label>
+                        <label>
+                            <span data-i18n="tradeTakeProfit">Take Profit</span>
+                            <input name="takeProfit" type="number" min="0" step="any" placeholder="0.00">
+                        </label>
+                        <label>
+                            <span data-i18n="tradeRiskPercent">Planlanan Risk (%)</span>
+                            <input name="riskPercent" type="number" min="0" max="100" step="any" placeholder="1.0">
+                        </label>
+                        <label>
+                            <span data-i18n="tradeFees">Komisyon / Ücret</span>
+                            <input name="fees" type="number" min="0" step="any" value="0">
+                        </label>
+                        <label>
+                            <span data-i18n="tradeFunding">Fonlama / Swap</span>
+                            <input name="funding" type="number" step="any" value="0">
+                        </label>
+                        <label>
+                            <span data-i18n="tradeStrategy">Strateji / Kurallar (5N1K)</span>
+                            <input name="strategy" maxlength="120" placeholder="Breakout, Pullback, SMC, FVG...">
+                        </label>
+                        <label>
+                            <span data-i18n="tradeSession">Seans</span>
+                            <select name="session">
+                                <option value="">Seç</option><option>Asya</option><option>Londra</option><option>New York</option><option>Türkiye</option><option>Diğer</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span data-i18n="tradeMoodBefore">İşlem Öncesi Duygu</span>
+                            <select name="moodBefore">
+                                <option value="">Seç</option><option>Sakin</option><option>Özgüvenli</option><option>Kararsız</option><option>Stresli</option><option>FOMO</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span data-i18n="tradeMoodAfter">İşlem Sonrası Duygu</span>
+                            <select name="moodAfter">
+                                <option value="">Seç</option><option>Sakin</option><option>Memnun</option><option>Pişman</option><option>Hayal kırıklığı</option><option>Nötr</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span data-i18n="tradeCurrency">Rapor Para Birimi</span>
+                            <select name="currency">
+                                <option value="TRY">TRY</option>
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                            </select>
+                        </label>
+                        <label class="field-wide">
+                            <span data-i18n="tradeNotes">İşlem Notları & 5N1K Analizi</span>
+                            <textarea name="notes" rows="4" maxlength="4000" placeholder="Neden girdim? Hangi teyitleri aldım? Nerede hata yaptım? Öğrendiklerim..."></textarea>
+                        </label>
+                        <label class="check-field field-wide">
+                            <input name="followedPlan" type="checkbox">
+                            <span data-i18n="tradeFollowedPlan">İşlem planıma ve kurallarıma sadık kaldım</span>
+                        </label>
+                    </div>
+
+                    <div class="trade-form-actions">
+                        <p class="form-message" id="trade-message" role="status" aria-live="polite"></p>
+                        <button class="account-primary" type="submit">
+                            <span data-i18n="btnSaveTrade">Trade Kaydet</span>
+                            <span class="button-arrow" aria-hidden="true">↗</span>
+                        </button>
+                        <button class="account-secondary" id="cancel-edit" type="button" hidden data-i18n="btnCancel">Vazgeç</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="trades-section" aria-labelledby="trades-heading">
+                <div class="section-heading">
+                    <div>
+                        <p class="account-eyebrow" data-i18n="archiveEyebrow">KİŞİSEL ARŞİV</p>
+                        <h2 id="trades-heading" data-i18n="archiveHeading">Trade Geçmişin</h2>
+                    </div>
+                    <div class="trade-tools">
+                        <label class="search-field">
+                            <span class="sr-only" data-i18n="searchPlaceholder">Trade ara</span>
+                            <input id="trade-search" type="search" placeholder="Sembol / strateji ara">
+                        </label>
+                        <select id="market-filter" aria-label="Piyasa filtresi">
+                            <option value="" data-i18n="filterAllMarkets">Tüm piyasalar</option>
+                            <option value="forex">Forex</option>
+                            <option value="crypto_spot">Kripto spot</option>
+                            <option value="crypto_futures">Kripto vadeli</option>
+                            <option value="bist">BIST</option>
+                            <option value="viop">VİOP</option>
+                            <option value="us_stocks">ABD hisseleri</option>
+                            <option value="commodities">Emtia</option>
+                            <option value="indices">Endeks</option>
+                            <option value="options">Opsiyon</option>
+                            <option value="other">Diğer</option>
+                        </select>
+                        <button class="account-secondary" id="export-selected-csv" type="button" data-i18n="btnExportSelectedCsv">Seçileni CSV İndir</button>
+                        <button class="account-secondary" id="export-selected-json" type="button" data-i18n="btnExportSelectedJson">Seçileni JSON İndir</button>
+                    </div>
+                </div>
+
+                <div id="trade-list" class="trade-list" aria-live="polite"></div>
+                <p id="trade-empty" class="trade-empty" hidden data-i18n="emptyTrades">Henüz trade kaydetmedin.</p>
+            </section>
+        </section>
+
+        <footer class="account-footer">
+            <span>Ledgerly / <span data-i18n="footerTagline">Kişisel trading günlüğü</span></span>
+            <a href="legal.html#privacy" data-i18n="footerPrivacy">Gizlilik ve kullanım</a>
+        </footer>
+    </main>
+    <div id="ambient-cursor-glow" aria-hidden="true"></div>
+</body>
+</html>

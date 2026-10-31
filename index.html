@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7f7f2">
+    <meta name="description" content="A thoughtful trading journal for tracking decisions, spotting patterns, and building a consistent process.">
+    <title>Ledgerly — Trade Journal</title>
+    <script>try { const savedCookieTheme = document.cookie.split("; ").find((item) => item.startsWith("ledgerly-theme="))?.split("=")[1]; document.documentElement.dataset.theme = savedCookieTheme || localStorage.getItem("ledgerly-theme") || "dark"; } catch { document.documentElement.dataset.theme = "dark"; }</script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/script.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="#home" aria-label="Ledgerly home"><span class="brand-mark" aria-hidden="true">L</span><span>ledgerly<span class="brand-period">.</span></span></a>
+        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav"><span></span><span></span></button>
+        <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+            <a href="#product" data-i18n="navProduct">Product</a><a href="#how-it-works" data-i18n="navHow">How it works</a><a href="#journal" data-i18n="navJournal">Journal</a><a href="pages/pricing.html#pricing" data-i18n="navPricing">Pricing</a>
+        </nav>
+        <div class="header-actions">
+            <label class="language-picker"><span class="sr-only" data-i18n="languageLabel">Choose language</span>
+                <select id="language-select" aria-label="Choose language"><option value="tr">🇹🇷 TR</option><option value="en" selected>🇺🇸 EN</option><option value="fr">🇫🇷 FR</option><option value="es">🇪🇸 ES</option><option value="de">🇩🇪 DE</option></select>
+            </label>
+            <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch theme"><span aria-hidden="true">☾</span></button>
+            <a class="header-coffee-btn" href="#support"><span class="coffee-icon" aria-hidden="true">☕</span><span data-i18n="supportHeaderBtn">Bana Destek Çık</span></a>
+            <a class="header-cta" href="pages/account.html?mode=register" data-i18n="accountLink">Sign up / Log in <span aria-hidden="true">↗</span></a>
+        </div>
+    </header>
+
+    <main id="home">
+        <section class="hero page-shell">
+            <div class="hero-copy reveal">
+                <p class="eyebrow"><span class="eyebrow-dot"></span><span data-i18n="eyebrow">A clearer view of every trade</span></p>
+                <h1 data-i18n="heroTitle">Trade with a plan.<br><span>Learn from every move.</span></h1>
+                <p class="hero-description" data-i18n="heroDescription">A thoughtful trading journal for tracking decisions, spotting patterns, and building a more consistent process.</p>
+                <div class="hero-actions"><a class="button button-dark" href="#journal"><span data-i18n="heroCta">Explore the journal</span><span class="button-arrow" aria-hidden="true">↗</span></a><a class="text-link" href="#how-it-works"><span class="play-icon" aria-hidden="true">▶</span><span data-i18n="watchDemo">See how it works</span></a></div>
+                <div class="hero-proof"><div class="avatar-stack" aria-hidden="true"><span>J</span><span>M</span><span>A</span><span>+</span></div><p data-i18n="heroProof">Made for the process, not the prediction.</p></div>
+            </div>
+
+            <div class="dashboard-wrap reveal" id="product" aria-label="Trading journal dashboard preview">
+                <div class="dashboard-window">
+                    <div class="dashboard-topbar"><div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div><span class="dashboard-label">LEDGERLY / <span data-i18n="dashboardWorkspace">WORKSPACE</span></span><button class="icon-button" type="button" aria-label="More options">···</button></div>
+                    <div class="dashboard-content">
+                        <div class="dashboard-heading"><div><p class="dashboard-kicker" data-i18n="dashboardOverview">YOUR OVERVIEW</p><h2 data-i18n="dashboardTitle">Good morning, Murat <span aria-hidden="true">✳</span></h2></div><button class="date-button" type="button"><span aria-hidden="true">▦</span> <span data-i18n="dashboardDate">Oct 1 – Oct 31</span> <span aria-hidden="true">⌄</span></button></div>
+                        <div class="stats-grid">
+                            <article class="stat-card"><p data-i18n="statNet">Net P&amp;L</p><strong>+$2,840.50</strong><span class="stat-change positive">↗ 12.8% <span data-i18n="vsLastMonth">vs last month</span></span></article>
+                            <article class="stat-card"><p data-i18n="statWinRate">Win rate</p><strong>68.4%</strong><span class="stat-change neutral">31 <span data-i18n="tradesLogged">trades logged</span></span></article>
+                            <article class="stat-card stat-card-muted"><p data-i18n="statAvgR">Average R</p><strong>1.82<span class="stat-unit">R</span></strong><span class="stat-change positive">↗ 0.24 <span data-i18n="vsLastMonth">vs last month</span></span></article>
+                        </div>
+                        <section class="chart-panel" aria-labelledby="chart-title"><div class="panel-heading"><div><h3 id="chart-title" data-i18n="chartTitle">Performance</h3><p data-i18n="chartSubtitle">Cumulative account growth</p></div><div class="chart-tabs" role="group" aria-label="Chart period"><button type="button" data-period="week" aria-pressed="false">1W</button><button type="button" data-period="month" aria-pressed="true">1M</button><button type="button" data-period="quarter" aria-pressed="false">3M</button></div></div><div class="chart-wrap"><div class="chart-y-labels" aria-hidden="true"><span>+$3k</span><span>+$2k</span><span>+$1k</span><span>$0</span></div><canvas id="performance-chart" role="img" data-chart-label="A rising performance chart for the selected period"></canvas></div><div class="chart-x-labels" aria-hidden="true"><span>01 OCT</span><span>08 OCT</span><span>15 OCT</span><span>22 OCT</span><span>31 OCT</span></div></section>
+                        <section class="recent-panel" aria-labelledby="recent-title"><div class="panel-heading recent-heading"><h3 id="recent-title" data-i18n="recentTitle">Recent trades</h3><a href="#journal" data-i18n="viewAll">View all ↗</a></div><div class="trade-row trade-header"><span data-i18n="tableMarket">MARKET</span><span data-i18n="tableSide">SIDE</span><span data-i18n="tableResult">RESULT</span><span data-i18n="tableDate">DATE</span></div><div class="trade-row"><span class="market-name"><span class="market-icon market-icon-blue">N</span> NASDAQ</span><span class="trade-side long-side" data-i18n="long">Long</span><span class="trade-result">+$420.00</span><span class="trade-date" data-date="2026-10-28">Oct 28</span></div><div class="trade-row"><span class="market-name"><span class="market-icon market-icon-gold">₿</span> BTC/USD</span><span class="trade-side short-side" data-i18n="short">Short</span><span class="trade-result">+$186.50</span><span class="trade-date" data-date="2026-10-27">Oct 27</span></div></section>
+                    </div>
+                </div>
+                <div class="floating-note" aria-hidden="true"><span class="note-icon">↗</span><span><strong>+$2,840</strong><small data-i18n="floatingNote">This month's progress</small></span></div><span class="hero-orbit orbit-one" aria-hidden="true"></span><span class="hero-orbit orbit-two" aria-hidden="true"></span>
+            </div>
+            <div class="hero-index" aria-hidden="true">01 — 05</div>
+        </section>
+
+        <section class="ticker-strip" aria-label="Product principles">
+            <div class="ticker-wrap">
+                <div class="ticker-track">
+                    <span data-i18n="tickerOne">LOG EVERY DECISION</span><i>✳</i>
+                    <span data-i18n="tickerTwo">FIND YOUR EDGE</span><i>✳</i>
+                    <span data-i18n="tickerThree">BUILD CONSISTENCY</span><i>✳</i>
+                    <span data-i18n="tickerFour">REVIEW WITH CLARITY</span><i>✳</i>
+                    <span data-i18n="tickerOne">LOG EVERY DECISION</span><i>✳</i>
+                    <span data-i18n="tickerTwo">FIND YOUR EDGE</span><i>✳</i>
+                    <span data-i18n="tickerThree">BUILD CONSISTENCY</span><i>✳</i>
+                    <span data-i18n="tickerFour">REVIEW WITH CLARITY</span><i>✳</i>
+                    <span data-i18n="tickerOne">LOG EVERY DECISION</span><i>✳</i>
+                    <span data-i18n="tickerTwo">FIND YOUR EDGE</span><i>✳</i>
+                    <span data-i18n="tickerThree">BUILD CONSISTENCY</span><i>✳</i>
+                </div>
+            </div>
+        </section>
+
+        <section class="story-section page-shell" id="how-it-works">
+            <div class="section-intro reveal"><p class="eyebrow"><span class="eyebrow-dot"></span><span data-i18n="storyEyebrow">A better trading habit</span></p><h2 data-i18n="storyTitle">The best edge is<br>knowing <span>yourself.</span></h2></div>
+            <div class="story-details reveal"><p data-i18n="storyDescription">Markets move fast. Your journal helps you slow down, capture the thinking behind each trade, and turn hindsight into a process you can repeat.</p><a class="underlined-link" href="#journal"><span data-i18n="storyLink">Make every trade count</span><span aria-hidden="true">↗</span></a></div>
+            <div class="feature-grid"><article class="feature-card reveal"><span class="feature-number">01</span><span class="feature-symbol" aria-hidden="true">⌁</span><h3 data-i18n="featureOneTitle">Capture the why</h3><p data-i18n="featureOneText">Record your setup, thesis, and state of mind while the details are fresh.</p></article><article class="feature-card feature-card-dark reveal"><span class="feature-number">02</span><span class="feature-symbol" aria-hidden="true">◷</span><h3 data-i18n="featureTwoTitle">See the patterns</h3><p data-i18n="featureTwoText">Review performance by setup, market, and the habits behind your results.</p></article><article class="feature-card reveal"><span class="feature-number">03</span><span class="feature-symbol" aria-hidden="true">↗</span><h3 data-i18n="featureThreeTitle">Build consistency</h3><p data-i18n="featureThreeText">Use gentle reminders to make post-trade reflection part of your routine.</p></article></div>
+        </section>
+
+        <section class="closing-section" id="journal"><div class="closing-inner page-shell reveal"><div><p class="eyebrow"><span class="eyebrow-dot"></span><span data-i18n="closingEyebrow">Your next trade starts here</span></p><h2 data-i18n="closingTitle">Make space to<br><span>think clearly.</span></h2></div><div class="closing-action"><p data-i18n="closingText">A calmer, clearer way to understand your trading decisions starts with one entry.</p><a class="button button-light" href="mailto:hello@ledgerly.example"><span data-i18n="closingCta">Get early access</span><span class="button-arrow" aria-hidden="true">↗</span></a></div></div><div class="closing-decoration" aria-hidden="true">L</div></section>
+        <section class="coffee-support" id="support">
+            <div class="coffee-support-inner page-shell reveal">
+                <div class="coffee-art" aria-hidden="true">
+                    <div class="coffee-sun"></div>
+                    <div class="coffee-cup"><span>☕</span></div>
+                    <i class="coffee-steam steam-one"></i><i class="coffee-steam steam-two"></i>
+                    <span class="coffee-spark spark-one">✳</span><span class="coffee-spark spark-two">✳</span>
+                    <span class="coffee-ring"></span>
+                </div>
+                <div class="coffee-copy">
+                    <p class="coffee-kicker"><span class="coffee-kicker-icon" aria-hidden="true">☕</span><span data-i18n="coffeeEyebrow">Bağımsız Geliştiriciye Destek</span></p>
+                    <h2 data-i18n="coffeeSupportTitle">İyi araçlar bir kahveyle büyür.<br><span>Bağımsız üretime destek ol.</span></h2>
+                    <p class="coffee-description" data-i18n="coffeeSupportDescription">Ledgerly reklamsız, gizliliğe saygılı ve bağımsız bir trade günlüğüdür. Günlük kararlarına netlik katıyorsa bir kahve ısmarlayarak sunucu masraflarına ve yeni özelliklere katkıda bulunabilirsin.</p>
+                    
+                    <div class="coffee-currency-row">
+                        <span class="currency-picker-label" data-i18n="coffeeCurrencyLabel">Para Birimi:</span>
+                        <div class="coffee-currency-picker" role="group" aria-label="Currency selection">
+                            <button type="button" data-currency="TRY" aria-pressed="true">₺ TRY</button>
+                            <button type="button" data-currency="USD" aria-pressed="false">$ USD</button>
+                            <button type="button" data-currency="EUR" aria-pressed="false">€ EUR</button>
+                        </div>
+                    </div>
+
+                    <div class="coffee-amounts-grid" id="coffee-amounts" role="group" aria-label="Choose a support tier"></div>
+
+                    <div class="custom-coffee-amount-wrap">
+                        <label class="custom-coffee-amount" for="custom-coffee-amount">
+                            <span data-i18n="customAmountLabel">Ya da farklı bir tutar belirle</span>
+                            <span class="custom-amount-input"><span class="custom-amount-symbol">$</span><input id="custom-coffee-amount" type="number" min="1" max="5000" step="1" inputmode="numeric" placeholder="10"></span>
+                        </label>
+                    </div>
+
+                    <div class="coffee-cta-row">
+                        <button class="coffee-primary" id="coffee-button" type="button">
+                            <span aria-hidden="true">☕</span>
+                            <span class="coffee-btn-text" id="coffee-btn-label">Kahveyle Destek Ol ($10)</span>
+                            <span class="coffee-arrow" aria-hidden="true">↗</span>
+                        </button>
+                    </div>
+
+                    <div class="coffee-trust-list">
+                        <span data-i18n="coffeeTrustSecure">🔒 PayTR 256-Bit SSL &amp; 3D Secure</span>
+                        <span data-i18n="coffeeTrustOnetime">⚡ Tek seferlik gönüllü katkı, abonelik yok</span>
+                        <span data-i18n="coffeeTrustFree">🤍 Ledgerly’yi kullanmak her zaman ücretsizdir</span>
+                    </div>
+
+                    <p class="coffee-payment-note" data-i18n="coffeePaymentNote">Ödeme altyapısı PayTR üzerinden çalışır; kart bilgileriniz asla sunucumuzda tutulmaz.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer page-shell"><a class="brand footer-brand" href="#home"><span class="brand-mark" aria-hidden="true">L</span><span>ledgerly<span class="brand-period">.</span></span></a><p data-i18n="footerNote">A journal for the work behind the trade.</p><div class="footer-actions"><a class="admin-link" href="pages/admin.html" data-i18n="adminLink">Local admin</a><a class="admin-link" href="pages/legal.html#privacy" data-i18n="privacyLink">Privacy</a><a class="admin-link" href="pages/legal.html#terms" data-i18n="termsLink">Terms</a><a class="coffee-button" href="#support"><span aria-hidden="true">☕</span> <span data-i18n="coffeeCta">Buy me a coffee</span></a><a class="admin-link footer-company" href="https://bytewavestudio.com" target="_blank" rel="noopener noreferrer">BytewaveStudio.com ↗</a><span class="footer-copy">© 2026 Ledgerly</span></div></footer>
+
+    <dialog class="support-dialog" id="coffee-dialog" aria-labelledby="coffee-title">
+        <button class="dialog-close" type="button" data-close-dialog aria-label="Close">×</button>
+        <p class="eyebrow"><span class="eyebrow-dot"></span><span data-i18n="coffeeEyebrow">Support the project</span></p>
+        <h2 id="coffee-title" data-i18n="coffeeTitle">Buy me a coffee</h2>
+        <p class="dialog-copy" id="coffee-selection"></p>
+        <form id="coffee-checkout-form" class="coffee-checkout-form">
+            <label for="support-email" data-i18n="supportEmailLabel">Email for your receipt</label>
+            <input id="support-email" name="email" type="email" autocomplete="email" required maxlength="100" placeholder="you@example.com">
+            <p class="coffee-checkout-error" id="coffee-checkout-error" role="alert" hidden></p>
+            <button class="button button-dark" id="coffee-checkout-submit" type="submit">
+                <span data-i18n="coffeeCheckoutCta">Continue to secure PayTR checkout</span>
+                <span class="button-arrow" aria-hidden="true">↗</span>
+            </button>
+        </form>
+        <div class="paytr-frame-wrap" id="paytr-frame-wrap" hidden>
+            <iframe id="paytr-frame" title="PayTR secure checkout" loading="lazy" referrerpolicy="strict-origin"></iframe>
+        </div>
+        <p class="coffee-payment-note" data-i18n="coffeeSecureNote">Payment details are entered only in PayTR’s secure form.</p>
+    </dialog>
+    <div id="ambient-cursor-glow" aria-hidden="true"></div>
+</body>
+</html>

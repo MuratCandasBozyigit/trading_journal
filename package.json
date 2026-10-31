@@ -1,0 +1,11 @@
+{
+  "name": "ledgerly-trading-journal",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=.env backend/server.mjs"
+  },
+  "engines": {
+    "node": ">=20.6.0"
+  }
+}

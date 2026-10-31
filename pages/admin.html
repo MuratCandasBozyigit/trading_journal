@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7f7f2">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Ledgerly — Admin</title>
+    <script>try { const cookieTheme = document.cookie.split("; ").find((item) => item.startsWith("ledgerly-theme="))?.split("=")[1]; document.documentElement.dataset.theme = cookieTheme || localStorage.getItem("ledgerly-theme") || "dark"; } catch { document.documentElement.dataset.theme = "dark"; }</script>
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <script src="../assets/js/admin.js" defer></script>
+</head>
+<body>
+    <main class="admin-shell">
+        <header class="admin-header">
+            <a class="admin-brand" href="../index.html"><span class="brand-mark">L</span><span>ledgerly<span class="brand-period">.</span></span></a>
+            <div class="admin-header-actions"><a href="pricing.html">Fiyatlandırma ↗</a><a href="../index.html">Siteye dön ↗</a></div>
+        </header>
+
+        <section class="admin-main" id="login-view" aria-labelledby="login-title">
+            <div class="admin-heading"><p class="admin-eyebrow"><span></span> YÖNETİM ALANI</p><h1 id="login-title">Admin girişi</h1><p class="admin-description">Paketlerini ve fiyatlandırma sayfasındaki özellikleri yönet.</p></div>
+            <p class="security-notice"><strong>Sunucu oturumu:</strong> Giriş ve paket değişiklikleri backend tarafından doğrulanır. Yayına çıkmadan önce güçlü bir yönetici parolası belirle ve HTTPS kullan.</p>
+            <form id="login-form" class="admin-form">
+                <label for="username">Kullanıcı adı</label><input id="username" name="username" autocomplete="username" required>
+                <label for="password">Şifre</label><input id="password" name="password" type="password" autocomplete="current-password" required>
+                <p class="form-error" id="login-error" role="alert" hidden></p>
+                <button class="primary-button" type="submit">Panele giriş <span aria-hidden="true">↗</span></button>
+            </form>
+            <p class="demo-hint">Giriş bilgileri proje kökündeki gizli <code>.env</code> dosyasından okunur.</p>
+        </section>
+
+        <section class="admin-main package-management" id="panel-view" aria-labelledby="panel-title" hidden>
+            <div class="panel-title-row"><div class="admin-heading"><p class="admin-eyebrow"><span></span> YÖNETİM ALANI</p><h1 id="panel-title">Paket yönetimi</h1><p class="admin-description">Kaydettiğin değişiklikler aynı tarayıcıdaki fiyatlandırma sayfasında görünür.</p></div><button class="secondary-button" id="logout-button" type="button">Oturumu kapat</button></div>
+            <p class="storage-notice">Paketler sunucu tarafında JSON veri dosyasında saklanır ve site ziyaretçileriyle paylaşılır.</p>
+            <div class="admin-layout">
+                <form id="package-form" class="admin-form package-form">
+                    <input type="hidden" name="packageId">
+                    <div class="form-section-title"><span>01</span><h2>Paket bilgileri</h2></div>
+                    <label for="package-name">Paket adı</label><input id="package-name" name="name" maxlength="50" required>
+                    <div class="form-columns"><div><label for="package-price">Fiyat</label><input id="package-price" name="price" type="number" min="0" step="0.01" required></div><div><label for="package-period">Dönem</label><input id="package-period" name="period" maxlength="24" placeholder="/ ay"></div></div>
+                    <label for="package-description">Kısa açıklama</label><input id="package-description" name="description" maxlength="140" required>
+                    <label for="package-features">Paket özellikleri <span>Her satıra bir özellik</span></label><textarea id="package-features" name="features" rows="6" required></textarea>
+                    <label class="featured-toggle"><input name="featured" type="checkbox"><span>Bu paketi öne çıkar</span></label>
+                    <div class="form-buttons"><button class="primary-button" type="submit">Paketi kaydet <span aria-hidden="true">↗</span></button><button class="secondary-button" id="new-package" type="button">Yeni paket</button></div>
+                    <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+                </form>
+                <section class="saved-plans" aria-labelledby="saved-plans-title"><div class="form-section-title"><span>02</span><h2 id="saved-plans-title">Kayıtlı paketler</h2></div><div id="package-list" class="package-list" aria-live="polite"></div></section>
+            </div>
+        </section>
+
+        <footer class="admin-footer"><span>Ledgerly / Local admin</span><span>Veriler bu tarayıcıda kalır</span></footer>
+    </main>
+</body>
+</html>
