@@ -541,14 +541,6 @@ function initPasswordToggles() {
     });
 }
 
-async function apiRequest(path, options = {}) {
-    const headers = { "content-type": "application/json", ...options.headers };
-    if (csrfToken && options.method && options.method !== "GET") headers["x-csrf-token"] = csrfToken;
-    const response = await fetch(path, { credentials: "same-origin", cache: "no-store", ...options, headers });
-    const result = await response.json().catch(() => ({}));
-    if (!response.ok) throw new Error(result.error || `İstek başarısız (${response.status})`);
-    return result;
-}
 
 function showAuthTab(tab) {
     const isLogin = tab === "login";
